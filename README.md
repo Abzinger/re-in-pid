@@ -2,6 +2,7 @@
 
 To use it within your reinforcement learning context, you need:
 * https://github.com/Abzinger/BROJA_2PID
+* import dit (Finn-Lizier)
 
 After that, use the function
 * `intrinsic_reward(n, piT, piX_T, piY_t)`
