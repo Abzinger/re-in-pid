@@ -1,7 +1,7 @@
 # re-in-pid
 
 To use it within your reinforcement learning context, you need:
-* https://github.com/Abzinger/BROJA_2PID
+* https://github.com/Abzinger/BROJA_2PID (BROJA)
 * `import dit` (Finn-Lizier)
 
 After that, use the function
