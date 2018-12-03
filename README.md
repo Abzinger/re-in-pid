@@ -14,3 +14,10 @@ which takes as arguments
 * `piY_T`: such that `piY_T[y,t]` is the probability, conditioned on _T_ taking action _t_, that _Y_ takes action _y_
 
 The function returns a single floating point number normalized to [-1,+1].
+
+
+To install this package just do:
+
+```
+pip install git+https://github.com/dojt/re-in-pid
+```
