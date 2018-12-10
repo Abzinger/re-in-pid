@@ -35,8 +35,8 @@ def intrinsic_reward_fl(piT, piX_T, piY_T):
         for x in range(0, n):
             for y in range(0, n):
                 local_si = min(-np.log2(piX[x]), -np.log2(piY[y])) - min(-np.log2(piX_T[x, t]), -np.log2(piY_T[y, t]))
-                local_ui_x = -np.log2(piX[x]) - local_si
-                local_ui_y = -np.log2(piY[y]) - local_si
+                local_ui_x = -np.log2(piX[x])+ log(piX_T[x,t]) - local_si
+                local_ui_y = -np.log2(piY[y])+ log(piY_T[y,t]) - local_si
 
                 si += piX_T[x, t] * piY_T[y, t] * piT[t] * local_si
                 ui_x += piX_T[x, t] * piY_T[y, t] * piT[t] * local_ui_x
