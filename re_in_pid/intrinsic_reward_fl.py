@@ -21,13 +21,13 @@ def intrinsic_reward_fl(piT, piX_T, piY_T):
     piX = np.zeros(shape=n, dtype=float)
     for t in range(0, n):
         for x in range(0, n):
-            piX[x] += piX_T[x, t] * piT[t]
+            piX[x] += piX_T[t, x] * piT[t]
 
     # Extract P(Y) and store it
     piY = np.zeros(shape=n, dtype=float)
     for t in range(0, n):
         for y in range(0, n):
-            piY[y] += piY_T[y, t] * piT[t]
+            piY[y] += piY_T[t, y] * piT[t]
 
     global_si = 0
     global_ui_x = 0
