@@ -39,12 +39,12 @@ def intrinsic_reward_fl(piT, piX_T, piY_T):
     for t in range(0, n):
         for x in range(0, n):
             for y in range(0, n):
-                local_si[t, x, y] = min(-np.log2(piX[x]), -np.log2(piY[y])) - min(-np.log2(piX_T[x, t]), -np.log2(piY_T[y, t]))
-                local_ui_x[t, x, y] = -np.log2(piX[x]) + np.log2(piX_T[x, t]) - local_si[t, x, y]
-                local_ui_y[t, x, y] = -np.log2(piY[y]) + np.log2(piY_T[y, t]) - local_si[t, x, y]
+                local_si[t, x, y] = min(-np.log2(piX[x]), -np.log2(piY[y])) - min(-np.log2(piX_T[t, x]), -np.log2(piY_T[t, y]))
+                local_ui_x[t, x, y] = -np.log2(piX[x]) + np.log2(piX_T[t, x]) - local_si[t, x, y]
+                local_ui_y[t, x, y] = -np.log2(piY[y]) + np.log2(piY_T[t, y]) - local_si[t, x, y]
 
-                global_si += piX_T[x, t] * piY_T[y, t] * piT[t] * (local_si[t, x, y])
-                global_ui_x += piX_T[x, t] * piY_T[y, t] * piT[t] * (local_ui_x[t, x, y])
-                global_ui_y += piX_T[x, t] * piY_T[y, t] * piT[t] * (local_ui_y[t, x, y])
+                global_si += piX_T[t, x] * piY_T[t, y] * piT[t] * (local_si[t, x, y])
+                global_ui_x += piX_T[t, x] * piY_T[t, y] * piT[t] * (local_ui_x[t, x, y])
+                global_ui_y += piX_T[t, x] * piY_T[t, y] * piT[t] * (local_ui_y[t, x, y])
 
     return (global_si, global_ui_x, global_ui_y), (local_si, local_ui_x, local_ui_y)
